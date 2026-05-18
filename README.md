@@ -1,0 +1,1 @@
+# bc-seminarska-ekipa2
