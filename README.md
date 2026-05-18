@@ -1,5 +1,5 @@
 # bc-seminarska-ekipa2
-# bc-seminarska-ekipa1
+
 # Git Workflow Guide – AL Seminar (Dynamics 365 Business Central)
 
 ## Namen
