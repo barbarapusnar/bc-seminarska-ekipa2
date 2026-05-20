@@ -38,7 +38,7 @@ table 50400 "Rental Type"
             begin
                 if ("Requires Deposit" = true) then
                     if ("Deposit Amount" < 1) then
-                        Error('Deposit amount has to be more than 1');
+                        Error('Deposit amount has to be bigger than 0');
             end;
         }
     }
