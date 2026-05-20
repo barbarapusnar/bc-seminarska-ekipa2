@@ -6,10 +6,10 @@
 
 // using Microsoft.Sales.Customer;
 
-// pageextension 50100 CustomerListExt extends "Customer List"
-// {
-//     trigger OnOpenPage();
-//     begin
-//         Message('App published: Hello world');
-//     end;
-// }
+pageextension 50110 CustomerListExt extends "Customer List"
+{
+    trigger OnOpenPage();
+    begin
+        Message('OK smo tu');
+    end;
+}
