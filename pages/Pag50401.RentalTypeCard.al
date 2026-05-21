@@ -21,10 +21,7 @@ page 50401 "Rental Type Card"
                 {
                     ToolTip = 'Specifies the value of the Description field.', Comment = '%';
                 }
-                field("Deposit Amount"; Rec."Deposit Amount")
-                {
-                    ToolTip = 'Specifies the value of the Deposit Amount field.', Comment = '%';
-                }
+
                 field("Requies Deposit"; Rec."Requies Deposit")
                 {
                     ToolTip = 'Specifies the value of the Requies Deposit field.', Comment = '%';
@@ -32,6 +29,12 @@ page 50401 "Rental Type Card"
                 field("Daily Rate"; Rec."Daily Rate")
                 {
                     ToolTip = 'Specifies the value of the Daily Rate field.', Comment = '%';
+                }
+                field("Deposit Amount"; Rec."Deposit Amount")
+                {
+                    ToolTip = 'Specifies the value of the Deposit Amount field.', Comment = '%';
+                    //JE vidno samo če imamo deposit rewired checked
+                    // Visible = Rec."Requies Deposit";
                 }
                 field(" Max Rental Days"; Rec." Max Rental Days")
                 {

@@ -37,7 +37,7 @@ table 50400 "Rental Type"
 
             begin
                 if ("Requies Deposit" = true) then
-                    if ("Deposit Amount" < 1) then
+                    if ("Deposit Amount" < 0.00) then
                         Error('Deposit ammount more biti večji kot 0');
             end;
         }
