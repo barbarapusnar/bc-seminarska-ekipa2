@@ -36,6 +36,7 @@ table 50402 "Rental Header"
         {
             Caption = 'Status';
         }
+        //NE DELA, TESTIRAJ
         field(7; "Total Amount"; Decimal)
         {
             Caption = 'Total Amount';

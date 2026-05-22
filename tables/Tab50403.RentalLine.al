@@ -29,11 +29,12 @@ table 50403 "Rental Line"
                         Error('Kolo mora imeti status Available');
             end;
         }
+        //NE DELA, POPRAVI in TESTIRAJ
         field(4; Description; Text[255])
         {
             Caption = 'Description';
             FieldClass = FlowField;
-            CalcFormula = lookup("Rental Type".Description where(Code = field("Bicycle No.")));
+            CalcFormula = lookup(Bicycle.Description where("No." = field("Bicycle No.")));
         }
         field(5; "Daily Rate"; Decimal)
         {
@@ -60,7 +61,8 @@ table 50403 "Rental Line"
     }
     keys
     {
-        key(PK; "Rental No.")
+        //Dodal Line No. da imam več Line na en rental testirej če je to sploh potreba
+        key(PK; "Rental No.", "Line No.")
         {
             Clustered = true;
         }
