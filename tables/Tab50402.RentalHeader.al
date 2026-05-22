@@ -13,6 +13,7 @@ table 50402 "Rental Header"
         {
             Caption = 'Customer No.';
             NotBlank = true;
+            TableRelation = Customer;
         }
         field(3; "Rental Date"; Date)
         {

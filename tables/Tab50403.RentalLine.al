@@ -38,16 +38,24 @@ table 50403 "Rental Line"
         field(5; "Daily Rate"; Decimal)
         {
             Caption = 'Daily Rate';
+            trigger OnValidate()
+            begin
+                CalculateLineAmount();
+            end;
         }
-        field(6; "Rental Days "; Integer)
+        field(6; "Rental Days"; Integer)
         {
             Caption = 'Rental Days ';
             MinValue = 0;
+            trigger OnValidate()
+            begin
+                CalculateLineAmount();
+            end;
         }
         field(7; "Line Amount"; Decimal)
         {
             Caption = 'Line Amount';
-            //NIMAM POJMA
+            Editable = false;
         }
     }
     keys
@@ -57,4 +65,8 @@ table 50403 "Rental Line"
             Clustered = true;
         }
     }
+    local procedure CalculateLineAmount()
+    begin
+        "Line Amount" := "Daily Rate" * "Rental Days";
+    end;
 }
