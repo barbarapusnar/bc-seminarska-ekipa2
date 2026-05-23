@@ -36,12 +36,12 @@ table 50402 "Rental Header"
         {
             Caption = 'Status';
         }
-        //NE DELA, TESTIRAJ
         field(7; "Total Amount"; Decimal)
         {
             Caption = 'Total Amount';
             FieldClass = FlowField;
-            CalcFormula = sum("Rental Line"."Line Amount" where("Rental No." = field("No.")));
+            CalcFormula = Sum("Rental Line"."Line Amount"
+                WHERE("Rental No." = FIELD("No.")));
         }
     }
     keys

@@ -24,17 +24,22 @@ table 50403 "Rental Line"
             var
                 BicycleStat: Record Bicycle;
             begin
-                if BicycleStat.Get("Bicycle No.") then
+                if BicycleStat.Get("Bicycle No.") then begin
+
                     if BicycleStat.Status <> BicycleStat.Status::Avalible then
                         Error('Kolo mora imeti status Available');
+
+                    //Najprej se more izračunati
+                    BicycleStat.CalcFields(Description);
+
+                    Description := BicycleStat.Description;
+                end;
             end;
         }
-        //NE DELA, POPRAVI in TESTIRAJ
         field(4; Description; Text[255])
         {
             Caption = 'Description';
-            FieldClass = FlowField;
-            CalcFormula = lookup(Bicycle.Description where("No." = field("Bicycle No.")));
+            Editable = false;
         }
         field(5; "Daily Rate"; Decimal)
         {
@@ -62,7 +67,7 @@ table 50403 "Rental Line"
     keys
     {
         //Dodal Line No. da imam več Line na en rental testirej če je to sploh potreba
-        key(PK; "Rental No.", "Line No.")
+        key(PK; "Rental No.")
         {
             Clustered = true;
         }
