@@ -48,4 +48,44 @@ page 50405 "Rental Card"
             }
         }
     }
+    actions
+    {
+        area(Processing)
+        {
+            action(StartRental)
+            {
+                Caption = 'Start Rental';
+                Image = Start;
+
+                ApplicationArea = All;
+
+                trigger OnAction()
+                var
+                    RentalManagement: Codeunit "Rental Management";
+                begin
+                    RentalManagement.StartRental(Rec);
+
+                    CurrPage.Update();
+                end;
+            }
+
+            action(ProcessReturn)
+            {
+                Caption = 'Process Return';
+                Image = Return;
+
+                ApplicationArea = All;
+
+                trigger OnAction()
+                var
+                    RentalManagement: Codeunit "Rental Management";
+                begin
+                    RentalManagement.ProcessReturn(Rec);
+
+                    CurrPage.Update();
+                end;
+            }
+
+        }
+    }
 }
