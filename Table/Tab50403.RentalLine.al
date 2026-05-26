@@ -2,7 +2,7 @@ table 50403 "Rental Line"
 {
     Caption = 'Rental Line';
     DataClassification = ToBeClassified;
-    
+
     fields
     {
         field(1; "Rental No."; Integer)
@@ -17,33 +17,46 @@ table 50403 "Rental Line"
         field(3; "Bicycle No."; Code[20])
         {
             Caption = 'Bicycle No.';
-            TableRelation = Bicycle."No.";
+            TableRelation = Bicycle where(Status = const(Available));
             trigger OnValidate()
-            var BicycleStat: Record Bicycle;
+            var
+                BicycleStat: Record Bicycle;
             begin
-                if BicycleStat.Get("Bicycle No.") then
-                if BicycleStat.Status <> BicycleStat.Status::Available then
-                Error('Bicycle has to have status Available');
+                if BicycleStat.Get("Bicycle No.") then begin
+                    if BicycleStat.Status <> BicycleStat.Status::Available then
+                        Error('Bicycle has to have status Available');
+
+                    BicycleStat.CalcFields(Description);
+                    Description := BicycleStat.Description;
+                end;
             end;
         }
         field(4; Description; Text[255])
         {
             Caption = 'Description';
-            FieldClass = FlowField;
+            Editable = false;
         }
         field(5; "Daily Rate"; Decimal)
         {
             Caption = 'Daily Rate';
+            trigger OnValidate()
+            begin
+                CalculateLineAmount();
+            end;
         }
         field(6; "Rental Days"; Integer)
         {
             Caption = 'Rental Days';
             MinValue = 0;
+            trigger OnValidate()
+            begin
+                CalculateLineAmount();
+            end;
         }
         field(7; "Line Amount "; Decimal)
         {
             Caption = 'Line Amount ';
-            //neki
+            Editable = false;
         }
     }
     keys
@@ -53,4 +66,8 @@ table 50403 "Rental Line"
             Clustered = true;
         }
     }
+    local procedure CalculateLineAmount()
+    begin
+        "Line Amount " := "Daily Rate" * "Rental Days";
+    end;
 }

@@ -2,7 +2,7 @@ table 50402 "Rental Header"
 {
     Caption = 'Rental Header';
     DataClassification = ToBeClassified;
-    
+
     fields
     {
         field(1; "No."; Integer)
@@ -13,6 +13,7 @@ table 50402 "Rental Header"
         {
             Caption = 'Customer No.';
             NotBlank = true;
+            TableRelation = Customer;
         }
         field(3; "Rental Date"; Date)
         {
@@ -24,7 +25,7 @@ table 50402 "Rental Header"
             trigger OnValidate()
             begin
                 if "Expected Return Date" < "Rental Date" then
-                Error('Expected Return Date: 1% cant be smaller than Rental Date %2', "Expected Return Date", "Rental Date");
+                    Error('Expected Return Date: 1% cant be smaller than Rental Date %2', "Expected Return Date", "Rental Date");
             end;
         }
         field(5; "Actual Return Date"; Date)
@@ -38,8 +39,8 @@ table 50402 "Rental Header"
         field(7; "Total Amount"; Decimal)
         {
             Caption = 'Total Amount';
-            FieldClass= FlowField;
-            CalcFormula = sum("Rental Line"."Line Amount " where("Rental No."= field("No.")));
+            FieldClass = FlowField;
+            CalcFormula = sum("Rental Line"."Line Amount " where("Rental No." = field("No.")));
         }
     }
     keys
