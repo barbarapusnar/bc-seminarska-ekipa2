@@ -33,10 +33,8 @@ page 50401 "Rental Type Card"
                 field("Deposit Amount"; Rec."Deposit Amount")
                 {
                     ToolTip = 'Specifies the value of the Deposit Amount field.', Comment = '%';
-                    //JE vidno samo če imamo deposit rewired checked
-                    // Visible = Rec."Requies Deposit";
                 }
-                field(" Max Rental Days"; Rec." Max Rental Days")
+                field(" Max Rental Days"; Rec."Max Rental Days")
                 {
                     ToolTip = 'Specifies the value of the Max Rental Days field.', Comment = '%';
                 }

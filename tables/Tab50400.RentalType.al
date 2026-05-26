@@ -19,11 +19,17 @@ table 50400 "Rental Type"
             Caption = 'Daily Rate';
             MinValue = 0;
         }
-        field(4; " Max Rental Days"; Integer)
+        field(4; "Max Rental Days"; Integer)
         {
             Caption = ' Max Rental Days';
             MinValue = 1;
+            trigger OnValidate()
+            begin
+                if "Max Rental Days" < 1 then
+                    Error('Maksimalno število dni mora biti vsaj 1.');
+            end;
         }
+
         field(5; "Requies Deposit"; Boolean)
         {
             Caption = 'Requies Deposit';
@@ -33,12 +39,10 @@ table 50400 "Rental Type"
             Caption = 'Deposit Amount';
 
             trigger OnValidate()
-            var
-
             begin
-                if ("Requies Deposit" = true) then
-                    if ("Deposit Amount" < 0.00) then
-                        Error('Deposit ammount more biti večji kot 0');
+                if "Requies Deposit" then
+                    if "Deposit Amount" <= 0 then
+                        Error('Deposit Amount mora biti večji kot 0.');
             end;
         }
     }
