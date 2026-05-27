@@ -21,7 +21,7 @@ table 50400 "Rental Type"
         }
         field(4; "Max Rental Days"; Integer)
         {
-            Caption = ' Max Rental Days';
+            Caption = 'Max Rental Days';
             MinValue = 1;
             trigger OnValidate()
             begin
