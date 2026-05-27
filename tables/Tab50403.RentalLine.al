@@ -67,7 +67,7 @@ table 50403 "Rental Line"
     keys
     {
         //Dodal Line No. da imam več Line na en rental testirej če je to sploh potreba
-        key(PK; "Rental No.")
+        key(PK; "Rental No.", "Line No.")
         {
             Clustered = true;
         }
