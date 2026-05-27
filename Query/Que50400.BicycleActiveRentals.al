@@ -51,12 +51,8 @@ query 50400 "Bicycle Active Rentals"
 
                     dataitem(Bicycle; Bicycle)
                     {
-                        // FIXED LINE
                         DataItemLink = "No." = Rental_Line."Bicycle No.";
-
-                        // safer join
-                        SqlJoinType = LeftOuterJoin;
-
+                        SqlJoinType = InnerJoin;
                         column(BicycleNo; "No.")
                         {
                             Caption = 'Šifra Kolesa';
