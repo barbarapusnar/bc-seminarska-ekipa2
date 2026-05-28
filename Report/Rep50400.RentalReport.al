@@ -76,16 +76,15 @@ report 50400 "Rental Report"
         {
             area(Content)
             {
-                group(GroupName)
+                group(Extras)
                 {
+
                 }
             }
         }
-        actions
-        {
-            area(Processing)
-            {
-            }
-        }
+    }
+    labels
+    {
+        ReportTitle = 'Poročilo o izposoji koles';
     }
 }
