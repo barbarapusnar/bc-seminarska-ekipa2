@@ -10,6 +10,9 @@ report 50400 "Rental Report"
     {
         dataitem(Customer; "Customer")
         {
+            column(PrintDate; Today)
+            {
+            }
             column(Customer_No; "No.")
             {
                 IncludeCaption = true;
@@ -41,6 +44,10 @@ report 50400 "Rental Report"
                 }
                 column(Status; Format(Status))
                 {
+                }
+                column(Total_Amount; "Total Amount")
+                {
+                    IncludeCaption = true;
                 }
                 dataitem("Rental Line"; "Rental Line")
                 {
@@ -75,18 +82,29 @@ report 50400 "Rental Report"
     {
         layout
         {
-            area(Content)
-            {
-                group(GroupName)
-                {
-                }
-            }
+            // area(Content)
+            // {
+            //     group(Extras)
+            //     {
+            //         Caption = 'Extras';
+
+            //         field(ReportDate; ReportDate)
+            //         {
+            //             Caption = 'Datum izpisa';
+            //             Editable = false;
+            //         }
+            //     }
+            // }
         }
-        actions
-        {
-            area(Processing)
-            {
-            }
-        }
+        // trigger OnOpenPage()
+        // begin
+        //     ReportDate := Today();
+        // end;
     }
+    labels
+    {
+        ReportTitle = 'Poročilo o izposoji koles';
+    }
+    // var
+    //     ReportDate: Date;
 }
