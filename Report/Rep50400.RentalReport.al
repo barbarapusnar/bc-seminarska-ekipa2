@@ -17,6 +17,9 @@ report 50400 "Rental Report"
             {
                 IncludeCaption = true;
             }
+            column(CurrentDate; CurrentDate)
+            {
+            }
             dataitem("Rental Header"; "Rental Header")
             {
                 DataItemLink = "Customer No." = field("No.");
@@ -87,4 +90,12 @@ report 50400 "Rental Report"
     {
         ReportTitle = 'Poročilo o izposoji koles';
     }
+
+    trigger OnPreReport()
+    begin
+        CurrentDate := Today();
+    end;
+
+    var
+        CurrentDate: Date;
 }
