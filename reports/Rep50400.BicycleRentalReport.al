@@ -12,14 +12,17 @@ report 50400 "Bicycle Rental Report"
         {
             column(CurrentDate_; CurrentDate)
             {
+
             }
 
             column(CustomerNo_; "No.")
             {
+                IncludeCaption = true;
             }
 
             column(CustomerName; Name)
             {
+                IncludeCaption = true;
             }
 
             dataitem("Rental Header"; "Rental Header")
