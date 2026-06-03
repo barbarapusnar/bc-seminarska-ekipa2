@@ -37,4 +37,21 @@ page 50404 "Rental List"
             }
         }
     }
+    actions
+    {
+        area(Reporting)
+        {
+            action(PrintRentalReport)
+            {
+                ApplicationArea = All;
+                Caption = 'Bicycle Rental Report';
+                Image = Print;
+
+                trigger OnAction()
+                begin
+                    Report.RunModal(Report::"Bicycle Rental Report");
+                end;
+            }
+        }
+    }
 }
