@@ -28,6 +28,7 @@ report 50400 "Bicycle Rental Report"
             dataitem("Rental Header"; "Rental Header")
             {
                 DataItemLink = "Customer No." = field("No.");
+                DataItemTableView = where(Status = const(Active));
 
                 column(No_; "No.")
                 {
@@ -57,6 +58,7 @@ report 50400 "Bicycle Rental Report"
                 dataitem("Rental Line"; "Rental Line")
                 {
                     DataItemLink = "Rental No." = field("No.");
+
 
                     column(Bicycle_No_; "Bicycle No.")
                     {
@@ -110,6 +112,9 @@ report 50400 "Bicycle Rental Report"
         CurrentDate := Today();
     end;
 
+
+
     var
         CurrentDate: Date;
+
 }
