@@ -1,18 +1,18 @@
-page 50407 "Rental Price List"
+page 50408 "Rental Price Card"
 {
     ApplicationArea = All;
-    Caption = 'Rental Price List';
-    PageType = List;
+    Caption = 'Rental Price Card';
+    PageType = Card;
     SourceTable = "Rental Price List1";
-    UsageCategory = Lists;
-    CardPageId = "Rental Price Card";
     
     layout
     {
         area(Content)
         {
-            repeater(General)
+            group(General)
             {
+                Caption = 'General';
+                
                 field("Code"; Rec."Code")
                 {
                     ToolTip = 'Specifies the value of the Code field.', Comment = '%';
@@ -20,6 +20,10 @@ page 50407 "Rental Price List"
                 field(Description; Rec.Description)
                 {
                     ToolTip = 'Specifies the value of the Description field.', Comment = '%';
+                }
+                field("Rental Type Code"; Rec."Rental Type Code")
+                {
+                    ToolTip = 'Specifies the value of the Rental Type Code field.', Comment = '%';
                 }
                 field("Starting Date"; Rec."Starting Date")
                 {

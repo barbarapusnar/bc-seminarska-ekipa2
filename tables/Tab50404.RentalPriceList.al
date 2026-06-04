@@ -1,4 +1,4 @@
-table 50404 "Rental Price List"
+table 50405 "Rental Price List1"
 {
     Caption = 'Rental PRice List';
     DataClassification = ToBeClassified;
@@ -17,19 +17,20 @@ table 50404 "Rental Price List"
         {
             Caption = 'Rental Type Code';
             NotBlank = true;
+            TableRelation = "Rental Type".Code;
         }
         field(4; "Starting Date"; Date)
         {
             Caption = 'Starting Date';
+        }
+        field(5; "Ending Date"; Date)
+        {
+            Caption = 'Ending Date';
             trigger OnValidate()
             begin
                 if "Starting Date" > "Ending Date" then
                     Error('Expected starting date: %1 nemora bit večji od ending date: %2', "Starting Date", "Ending Date");
             end;
-        }
-        field(5; "Ending Date"; Date)
-        {
-            Caption = 'Ending Date';
         }
         field(6; "Daily Rate"; Decimal)
         {
