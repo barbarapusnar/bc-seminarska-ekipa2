@@ -20,6 +20,7 @@ table 50404 "Rental Price List"
         {
             Caption = 'Rental Type Code';
             NotBlank = true;
+            TableRelation = "Rental Type".Code;
 
             trigger OnValidate()
             begin
