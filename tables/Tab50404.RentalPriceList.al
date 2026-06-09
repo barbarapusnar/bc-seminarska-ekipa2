@@ -1,4 +1,4 @@
-table 50404 "Rental Price List"
+table 50405 "Rental Price List"
 {
     Caption = 'Rental Price List';
     DataClassification = ToBeClassified;
