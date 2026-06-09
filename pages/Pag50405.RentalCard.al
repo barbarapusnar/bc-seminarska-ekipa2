@@ -86,6 +86,51 @@ page 50405 "Rental Card"
                 end;
             }
 
+            action(CreateSalesInvoice)
+            {
+                Caption = 'Create Sales Invoice';
+                Image = Invoice;
+
+                ApplicationArea = All;
+
+                trigger OnAction()
+                var
+                    SalesHeader: Record "Sales Header";
+                    SalesLine: Record "Sales Line";
+                    RentalLine: Record "Rental Line";
+                    LineNo: Integer;
+                begin
+                    if Rec.Status <> Rec.Status::Returned then
+                        Error('The rental must have status "Returned" before creating a sales invoice.');
+
+                    SalesHeader.Init();
+                    SalesHeader."Document Type" := SalesHeader."Document Type"::Invoice;
+                    SalesHeader."Sell-to Customer No." := Rec."Customer No.";
+                    SalesHeader."Bill-to Customer No." := Rec."Customer No.";
+                    SalesHeader."Posting Date" := Today;
+                    SalesHeader."Document Date" := Today;
+                    SalesHeader.Insert();
+
+                    RentalLine.SetRange("Rental No.", Rec."No.");
+                    if RentalLine.FindSet() then begin
+                        LineNo := 10000;
+                        repeat
+                            SalesLine.Init();
+                            SalesLine."Document Type" := SalesLine."Document Type"::Invoice;
+                            SalesLine."Document No." := SalesHeader."No.";
+                            SalesLine."Line No." := LineNo;
+                            SalesLine.Description := RentalLine.Description;
+                            SalesLine.Quantity := RentalLine."Rental Days";
+                            SalesLine."Unit Price" := RentalLine."Daily Rate";
+                            SalesLine.Insert();
+
+                            LineNo += 10000;
+                        until RentalLine.Next() = 0;
+                    end;
+
+                    Page.RunModal(Page::"Sales Invoice", SalesHeader);
+                end;
+            }
         }
     }
 }
