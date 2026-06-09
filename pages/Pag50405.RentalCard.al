@@ -85,7 +85,21 @@ page 50405 "Rental Card"
                     CurrPage.Update();
                 end;
             }
+            action(CreateSalesInvoice)
+            {
+                Caption = 'Create Sales Invoice';
+                Image = Invoice;
+                ApplicationArea = All;
 
+                trigger OnAction()
+                var
+                    RentalInvoice: Codeunit "Rental Invoice";
+                begin
+                    RentalInvoice.CreateSalesInvoice(Rec);
+                    CurrPage.Update();
+
+                end;
+            }
         }
     }
 }
