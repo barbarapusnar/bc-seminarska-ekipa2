@@ -36,4 +36,20 @@ page 50402 "Bicycle List"
             }
         }
     }
+    actions
+    {
+        area(Processing)
+        {
+            action(ImportBicycles)
+            {
+                Caption = 'Import Bicycles';
+                Image = Import;
+                ApplicationArea = All;
+                trigger OnAction()
+                begin
+                    Xmlport.Run(Xmlport::"Import Bicycles");
+                end;
+            }
+        }
+    }
 }
