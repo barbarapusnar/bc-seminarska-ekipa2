@@ -1,13 +1,16 @@
 page 50409 "Bicycle API"
 {
     PageType = API;
-    APIPublisher = 'DefaultPublisher';
-    APIGroup = 'bicycles';
-    APIVersion = 'v1.0';
-    SourceTable = Bicycle;
+    Caption = 'Bicycle API';
 
-    EntityName = 'Bicycle';
-    EntitySetName = 'Bicycles';
+    APIPublisher = 'school';
+    APIGroup = 'rental';
+    APIVersion = 'v1.0';
+
+    EntityName = 'bicycle';
+    EntitySetName = 'bicycles';
+
+    SourceTable = Bicycle;
 
     InsertAllowed = false;
     ModifyAllowed = false;
@@ -17,25 +20,39 @@ page 50409 "Bicycle API"
     {
         area(Content)
         {
-            repeater(Items)
+            repeater(General)
             {
-                field(No; Rec."No.")
+                field(id; Rec.SystemId)
+                {
+                    Caption = 'Id';
+                    ApplicationArea = All;
+                }
+
+                field(no; Rec."No.")
                 {
                     Caption = 'No.';
+                    ApplicationArea = All;
                 }
-                field(Description; Rec.Description)
+
+                field(description; Rec.Description)
                 {
                     Caption = 'Description';
+                    ApplicationArea = All;
                 }
-                field(Status; Rec.Status)
+
+                field(status; Rec.Status)
                 {
                     Caption = 'Status';
+                    ApplicationArea = All;
                 }
-                field(RentalType; Rec."Rental Type Code")
+
+                field(rentalTypeCode; Rec."Rental Type Code")
                 {
                     Caption = 'Rental Type';
+                    ApplicationArea = All;
                 }
             }
         }
     }
+
 }
